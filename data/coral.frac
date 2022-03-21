@@ -1,0 +1,8 @@
+# This one reminds me of coral
+type: Mandelbrot
+pixels: 1024
+centerX: -0.693792639088625
+centerY: -0.36850658033037173
+axisLength: 0.005
+pixels: 640
+iterations: 512

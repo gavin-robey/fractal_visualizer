@@ -1,0 +1,7 @@
+# A study of the tip of the tip of the tip of the Mandebrot set's main antenna
+type: Mandelbrot
+pixels: 640
+centerX: -1.789435
+centerY: 0.0
+axisLength: 0.09375
+iterations: 100

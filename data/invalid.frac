@@ -1,0 +1,12 @@
+# This is a purposefully broken fractal config file
+# Use this to stress-test your configuration file parser
+# Here be dragons!
+Type: BurningShipJulia
+centerX: in the middle
+centerY:
+Itertons: 23.654
+PIXELS: 894.965
+cImag: 0.3
+Type: this is redundant
+Type: no matter, this will all be forgotten in a moment
+Type: julia

@@ -1,0 +1,11 @@
+# An unconnected Julia set fractal
+type: julia
+creal: .26
+cimag: .0015
+centerx: 0
+centery: 0
+axislength: 2.17
+pixels: 512
+iterations: 64
+
+# See also connected.frac

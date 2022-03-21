@@ -1,0 +1,7 @@
+# Reminds me of a starfish... you can see it, too, right?
+type:   Mandelbrot
+pixels: 640
+iterations: 312
+centerX: -0.463595023481762
+centerY: 0.598380871135558
+axisLength: 0.00128413675654471

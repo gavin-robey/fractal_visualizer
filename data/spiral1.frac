@@ -1,0 +1,7 @@
+# spiral1 from the original starter code
+type: mandelbrot
+pixels: 640
+centerx: -0.747
+centery: 0.1075
+axislength: 0.002
+iterations: 100

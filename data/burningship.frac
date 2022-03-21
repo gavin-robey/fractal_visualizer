@@ -1,0 +1,10 @@
+# A basic Burning Ship Julia fractal
+# You'll need to implement this formula yourself to make your program produce this image
+type: burningshipjulia
+creal: -.598
+cimag: .9225
+centerx: 0
+centery: 0
+axislength: 4
+pixels: 512
+iterations: 64

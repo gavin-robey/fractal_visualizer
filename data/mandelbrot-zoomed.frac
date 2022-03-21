@@ -1,0 +1,7 @@
+# Basic mandelbrot set, zoomed in a bit and with more iterations
+type: mandelbrot
+pixels: 640
+centerx: -1.0
+centery: 0.0
+axislength: 1.0
+iterations: 256

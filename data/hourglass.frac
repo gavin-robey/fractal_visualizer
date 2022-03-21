@@ -1,0 +1,12 @@
+# I think this looks like an hourglass
+type: julia
+creal: -1
+cimag: 0
+pixels: 1024
+
+# I guess "X marks the spot" works, too.  Naming stuff is hard, okay?
+
+centerx: 0.618
+centery: 0.0
+axislength: 0.017148277367054
+iterations: 78

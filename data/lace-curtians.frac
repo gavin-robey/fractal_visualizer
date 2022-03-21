@@ -1,0 +1,12 @@
+# My grandmother has lace curtains that look JUST LIKE THIS!
+type:   Julia
+pixels: 640
+iterations: 512
+centerX: -1.01537721564149
+centerY: 0.249425427273733
+axisLength: 0.0121221433855615
+cReal: -1.0
+cImag: 0.0
+# Disregard these comments...
+# minReal:-1.0234586445652 maxReal:-1.00729578671778
+# minImag:0.243364355580952 maxImag:0.255486498966514

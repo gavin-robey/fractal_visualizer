@@ -1,0 +1,8 @@
+# Mandelbrot^3, fully zoomed out
+# You'll need to implement this formula yourself to make your program produce this image
+type: mandelbrot3
+pixels: 640
+centerx: 0.0
+centery: 0.0
+axislength: 4.0
+iterations: 100

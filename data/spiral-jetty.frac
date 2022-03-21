@@ -1,0 +1,9 @@
+# An homage to Utah's official work of art
+# Have you ever visited the northeast shore of the Great Salt Lake?
+
+type: mandelbrot
+pixels: 1024
+centerx: -0.761335372924805
+centery: 0.0835704803466797
+axislength: 0.00497817993164062
+iterations: 1024
