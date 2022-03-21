@@ -386,6 +386,7 @@ repo](https://gitlab.cs.usu.edu/erik.falor/sp22-cs1440-lecturenotes/-/tree/maste
 Once you've got a copy of your UML diagram *in a viewable image format,* commit your UML diagram under the `doc/` directory.
 
 Your UML diagram can be created with any drawing software.  Here are two recommendations:
+
 0.  https://diagrams.net *(also known as draw.io)*
     *   **Uncheck the "Transparent Background" option when you export your UML class diagram to a PNG image**
 1.  https://lucidchart.com
