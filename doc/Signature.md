@@ -1,18 +1,10 @@
-*TODO: Delete these example entries and replace with your own*
-
 ## Sprint 4.0
 
-| Date        | Time Spent | Events
-|-------------|------------|--------------------
-| Nocember 10 | 1 hour     | Wrote requirements specification and system analysis
-| Nocember 11 | 45 minutes | Wrote system design; revised requirements and system analysis
-| Nocember 12 | 1 hour     | Prototyped drawing a rectangle with turtle; revised software plan
-| Nocember 13 | 2.5 hours  | Initial implementation; main menu and prompts done; turtle draws a few shapes but ultimately "walks" off the screen
-| Nocember 14 | 0          | Weekend - no work
-| Nocember 15 | 0          | Weekend - no work
-| Nocember 16 | 2 hours    | Initial version scrapped; revised software plan; started over with new plan and fixed the "walking off the screen" bug
-| Nocember 17 | 1.5 hours  | Test cases devised; fixed a bug uncovered by testing process
-| Nocember 18 | 30 minutes | Finished documentation; pushed to GitLab; cloned & re-ran test cases
+| Date       | Time Spent | Events
+|------------|------------|--------------------
+| March 21   | 1 hour     | Cloned the Repo and looked at the requirements of this assignment.
+| March 22   | 1 hour     | Found smells and finished the Smells.md file
+| Total Time | 2 hours    |
 
 
 ## Sprint 4.1
