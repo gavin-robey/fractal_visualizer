@@ -2,21 +2,72 @@
 
 ## Phase 0: Requirements Specification *(10%)*
 
-**Deliver:**
+**Description**
+* This program is an interactive program that creates an image based on a fractal algorithm.
+* There are two different types of fractal algorithms, the Julia algorithm and the Mandelbrot algorithm.
+* There are many variations of these algorithms that will be displayed and selected by the user.
+* The implementation of the functionality described above is already complete but is completed by extremely messy code.
+* The current implementation must be refactored to be readable.
+* Unused code can be deleted, parameters can be changed, function and variable names can be changed, and redundant code should be deleted.
+* The refactored code must be split into 6 different modules: 
+* Main.py, FractalInformation.py, ImagePainter.py, Julia.py, Mandelbrot.py, and Palette.py 
+* Main.py is the driver for the program, and is the only file that deals with command line arguments.
+* FractalInformation.py stores all the information to make a fractal in a dictionary
+* ImagePainter.py is in charge of painting the image and displaying that to the screen
+* Palette.py contains the color palette for both algorithm types, and returns the color for a specific pixel.
+* Julia.py returns the number of iterations found using the Julia algorithm
+* Mandelbrot.py returns the number of iterations found using the Mandelbrot algorithm
+* At the end of this project, this code should display the exact same output as the original program but will be organized.
 
-*   A detailed written description of the problem this program aims to solve.
-*   Describe what a *good* solution looks like.
-    *   List what you already know how to do.
-    *   Point out any challenges that you can foresee.
+###What good solutions look like
+A good solution to this project is when this program is written completely differently but outputs the exact same thing
+as the original implementation. This project will be complete when all 6 modules are written in a clean and concise manner.
+Each will have the exact function that is described by the instructions and as described above. Also all unit tests made 
+must pass in order for this project to be fully complete.
 
+**Handling errors**
+* If invalid input is used in each menu, the program will quit
+
+**What I know how to do** 
+* Create classes, and modularize my code
+* Create readable code.
+* Use the complex function in python 
+* Create loops to iterate through data
+* Use the abs function in python
+
+**What I need to work on/ Challenges I foresee**
+* Reading other people's code
+* Creating Unit tests
+* The math on how this program works
 
 ## Phase 1: System Analysis *(10%)*
 
-**Deliver:**
+ **Inputs/ Data**
+* Data is collected from the user from the command line using ``sys.argv``
+* The data collected from the user is in the form of a list of strings, and determines which algorithm will be used.
+* The name of the fractal, the fractal type as well as the fractal information is input.
+* A coordinate is input into the Palette class.
+* Depending on which algorithm is selected, a list of color data will be used to determine each pixel's color in the Palette class.
+* This will be determined by the fractal type input data 
+* In both the Julia and Mandelbrot module, the coordinate of the pixel as well as the length of the color data will be input
 
-*   List all of the data that is used by the program, making note of where it comes from.
-*   Explain what form the output will take.
-*   Describe what algorithms and formulae will be used (but don't write them yet).
+**Output**
+* A picture is output to the screen using Tk, Canvas, PhotoImage, and mainloop from the tkinter module.
+* The picture is output using a window made from the TK class 
+* Each picture contains thousands of pixels that are stored in the Canvas class
+* The color of each pixel is determined by the output of the Palette class
+* The output of the Julia and Mandelbrot files determines the color used by the Palette class
+
+**Algorithms**
+* To determine if input is valid from the user, a check must be done, if the check fails then the program will quit 
+* If not, the specified algorithm will be painted.
+* To paint each picture the color of each pixel will be determined.
+* The color is determined by finding the amount of iterations that are needed to 
+find the absolute value of the distance between a real coordinate and an imaginary coordinate
+* To find the distance we can use the distance formula. 
+* Then we can find the absolute value of this distance
+* To find the iterations, we can loop until the right distance is found determined by either the Julia algorithm or the 
+Mandelbrot algorithm.
 
 
 ## Phase 2: Design *(30%)*
