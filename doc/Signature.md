@@ -5,7 +5,8 @@
 | March 21   | 1 hour     | Cloned the Repo and looked at the requirements of this assignment.
 | March 22   | 1 hour     | Found smells and finished the Smells.md file
 | March 23   | 1 hour     | Finished phase 0 and phase 1
-| Total Time | 3 hours    |
+| March 24   | 4 hours    | Cleaned up original files, Finished phase 2 of SDP and finished user manual, and finished first UML
+| Total Time | 7 hours    |
 
 
 ## Sprint 4.1
