@@ -1,5 +1,14 @@
 # Tkinter Installation & Troubleshooting
 
+## Table of Contents
+
+*   [Windows + Python installed from Python.org](#windows-python-installed-from-pythonorg)
+*   [Windows + Python installed from Windows App Store](#windows-python-installed-from-windows-app-store)
+*   [Linux: Arch-based distributions (Manjaro, Artix, etc.)](#linux-arch-based-distributions-manjaro-artix-etc)
+*   [Linux: Debian-based distributions (Ubuntu, Kubuntu, Xubuntu, Mint, etc.)](#linux-debian-based-distributions-ubuntu-kubuntu-xubuntu-mint-etc)
+*   [macOS Monterey](#macos-monterey)
+
+
 The starter code is runnable out-of-the-box.  If it doesn't work on your computer, check this document for instructions.  If you still have trouble, contact DuckieCorp management with a bug report.
 
 **Include:**
