@@ -2,8 +2,8 @@
 This module contains all the needed information for each fractal
 This module consists of only one dictionary containing all the values used.
 There are 12 keys each containing necessary values.
-Each of the 12 keys contains another dictionary that holds 3 keys each.
-These keys are 'centerX', 'centerY', and 'axisLen'
+Each of the 12 keys contains another dictionary that holds 4 keys each.
+These keys are 'centerX', 'centerY', 'axisLen', and 'type'
 '''
 fractals = {
     'fulljulia': {

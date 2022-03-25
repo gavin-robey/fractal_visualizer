@@ -139,11 +139,11 @@ in FractalInformation.py
 This module contains all the needed information for each fractal
 This module consists of only one dictionary containing all the values used.
 There are 12 keys each containing necessary values. 
-Each of the 12 keys contains another dictionary that holds 3 keys each.
-These keys are 'centerX', 'centerY', and 'axisLen'
+Each of the 12 keys contains another dictionary that holds 4 keys each.
+These keys are 'centerX', 'centerY', 'axisLen', and 'type'
 '''
 # This pattern will be repeated for the 12 values
-fractals = {fractalType: x: data, y: data, axisLen: data }
+fractals = {fractalType: x: data, y: data, axisLen: data, type: fractalType}
 
 ```
 #### What happens with good input?
@@ -673,18 +673,26 @@ testAxisLength: This tests to make sure both the dictionary can be accessed prop
 
 ## Phase 6: Maintenance
 
-**Deliver:**
 
 *   Write brief and honest answers to these questions: *(Note: do this before you complete **Phase 5: Deployment**)*
-    *   What parts of your program are sloppily written and hard to understand?
-        *   Are there parts of your program which you aren't quite sure how/why they work?
-        *   If a bug is reported in a few months, how long would it take you to find the cause?
-    *   Will your documentation make sense to...
-        *   ...anybody besides yourself?
-        *   ...yourself in six month's time?
-    *   How easy will it be to add a new feature to this program in a year?
-    *   Will your program continue to work after upgrading...
-        *   ...your computer's hardware?
-        *   ...the operating system?
-        *   ...to the next version of Python?
+    * What parts of your program are sloppily written and hard to understand?
+    * *I think this is some of the cleaner code ive written, but I do think the image painter class could be much cleaner*
+        * Are there parts of your program which you aren't quite sure how/why they work?
+        * *Yeah I still have no idea how the julia or mandelbrot algorithms work but thats ok I understand my code*
+        * If a bug is reported in a few months, how long would it take you to find the cause?
+        * *It would not take long at all*
+    * Will your documentation make sense to...
+        * ...anybody besides yourself?
+        * *Hopefully*
+        * ...yourself in six month's time?
+        * *Yes I would be able to*
+    * How easy will it be to add a new feature to this program in a year?
+    * *Pretty easy, this was the purpose of this project after all*
+    * Will your program continue to work after upgrading...
+        * ...your computer's hardware?
+        * *Yes*
+        * ...the operating system?
+        * *Yes*
+        * ...to the next version of Python?
+        * *Yes*
 *   Fill out the Assignment Reflection on Canvas.
