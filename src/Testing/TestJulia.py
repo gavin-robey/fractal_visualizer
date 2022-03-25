@@ -23,33 +23,54 @@
 # IN THE SOFTWARE.  	         	  
 
 import unittest  	         	  
-from julia_fractal import getColorFromPalette, grad, WHITE, f, \
-    getFractalConfigurationDataFromFractalRepositoryDictionary  	         	  
+from Palette import Palette
+import Julia, Mandelbrot
+from FractalInformation import fractals
 
 
 # autocmd BufWritePost <buffer> !python3 runTests.py  	         	  
 
-class TestJulia(unittest.TestCase):  	         	  
-    def test_colorOfThePixel(self):  	         	  
-        self.assertEqual(getColorFromPalette(complex(0, 0)), '#009cb3')  	         	  
-        self.assertEqual(getColorFromPalette(complex(-0.751, 1.1075)), '#ffe4b5')  	         	  
-        self.assertEqual(getColorFromPalette(complex(-0.2, 1.1075)), '#ffe4b5')  	         	  
-        self.assertEqual(getColorFromPalette(complex(-0.75, 0.1075)), '#009cb3')  	         	  
-        self.assertEqual(getColorFromPalette(complex(-0.748, 0.1075)), '#009cb3')  	         	  
-        self.assertEqual(getColorFromPalette(complex(-0.7562500000000001, 0.078125)), '#009cb3')  	         	  
-        self.assertEqual(getColorFromPalette(complex(-0.7562500000000001, -0.234375)), '#ffeda4')  	         	  
-        self.assertEqual(getColorFromPalette(complex(0.3374999999999999, -0.625)), '#ffe7ae')  	         	  
-        self.assertEqual(getColorFromPalette(complex(-0.6781250000000001, -0.46875)), '#ffe7ae')  	         	  
-        self.assertEqual(getColorFromPalette(complex(0.4937499999999999, -0.234375)), '#fff797')  	         	  
-        self.assertEqual(getColorFromPalette(complex(0.3374999999999999, 0.546875)), '#ffe9ab')  	         	  
+class TestJulia(unittest.TestCase):
 
-    def test_dictionaryGetter(self):  	         	  
-        self.assertIsNone(getFractalConfigurationDataFromFractalRepositoryDictionary(f, 'absent'))  	         	  
-        self.assertIsNotNone(getFractalConfigurationDataFromFractalRepositoryDictionary(f, 'fulljulia'))  	         	  
-        self.assertIsNone(getFractalConfigurationDataFromFractalRepositoryDictionary(f, ''))  	         	  
-        self.assertIsNotNone(getFractalConfigurationDataFromFractalRepositoryDictionary(f, 'lakes'))  	         	  
-        self.assertIsNone(getFractalConfigurationDataFromFractalRepositoryDictionary(f, 'Still Not In Here'))  	         	  
-        self.assertIsNotNone(getFractalConfigurationDataFromFractalRepositoryDictionary(f, 'hourglass'))  	         	  
+    def test_colorOfThePixel(self):  	         	  
+        self.assertEqual(Palette("julia", complex(0, 0), Julia, Mandelbrot).getPixelColor(), '#009cb3')
+        self.assertEqual(Palette("julia", complex(-0.751, 1.1075), Julia, Mandelbrot).getPixelColor(), '#ffe4b5')
+        self.assertEqual(Palette("julia", complex(-0.2, 1.1075), Julia, Mandelbrot).getPixelColor(), '#ffe4b5')
+        self.assertEqual(Palette("julia", complex(-0.75, 0.1075), Julia, Mandelbrot).getPixelColor(), '#009cb3')
+        self.assertEqual(Palette("julia", complex(-0.748, 0.1075), Julia, Mandelbrot).getPixelColor(), '#009cb3')
+        self.assertEqual(Palette("julia", complex(-0.7562500000000001, 0.078125), Julia, Mandelbrot).getPixelColor(), '#009cb3')
+        self.assertEqual(Palette("julia", complex(-0.7562500000000001, -0.234375), Julia, Mandelbrot).getPixelColor(), '#ffeda4')
+        self.assertEqual(Palette("julia", complex(0.3374999999999999, -0.625), Julia, Mandelbrot).getPixelColor(), '#ffe7ae')
+        self.assertEqual(Palette("julia", complex(-0.6781250000000001, -0.46875), Julia, Mandelbrot).getPixelColor(), '#ffe7ae')
+        self.assertEqual(Palette("julia", complex(0.4937499999999999, -0.234375), Julia, Mandelbrot).getPixelColor(), '#fff797')
+        self.assertEqual(Palette("julia", complex(0.3374999999999999, 0.546875), Julia, Mandelbrot).getPixelColor(), '#ffe9ab')
+
+    def testAxisLength(self):
+        self.assertEqual(fractals["fulljulia"]["axisLen"], 4.0)
+        self.assertEqual(fractals["hourglass"]["axisLen"], 0.017148277367054)
+        self.assertEqual(fractals["lakes"]["axisLen"], 0.164938488846612)
+        self.assertEqual(fractals["lace-curtains"]["axisLen"], 0.0121221433855615)
+        self.assertEqual(fractals["mandelbrot"]["axisLen"], 2.5)
+        self.assertEqual(fractals["mandelbrot-zoomed"]["axisLen"], 1.0)
+        self.assertEqual(fractals["spiral0"]["axisLen"], 0.004978179931102462)
+        self.assertEqual(fractals["spiral1"]["axisLen"], 0.002)
+        self.assertEqual(fractals["seahorse"]["axisLen"], 0.01)
+        self.assertEqual(fractals["elephants"]["axisLen"], 0.03)
+        self.assertEqual(fractals["leaf"]["axisLen"], 0.000051248888)
+        self.assertEqual(fractals["starfish"]["axisLen"], 0.00128413675654471)
+
+    def testPixelAmount(self):
+        self.assertEqual(Julia.testPixelAmount(7, 7), 49)
+        self.assertEqual(Julia.testPixelAmount(257, 321), 82497)
+        self.assertEqual(Julia.testPixelAmount(256, 256), 65536)
+        self.assertEqual(Julia.testPixelAmount(100, 100), 10000)
+        self.assertEqual(Julia.testPixelAmount(640, 480), 307200)
+
+    def test_palleteLength(self):
+        self.assertEqual(78, len(Palette("julia", complex(0, 0), Julia, Mandelbrot)))
+
+    def testNumOfFractals(self):
+        self.assertEqual(len(fractals), 12)
 
 
 if __name__ == '__main__':  	         	  

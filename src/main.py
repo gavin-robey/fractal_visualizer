@@ -41,6 +41,6 @@ elif sys.argv[1] not in JULIAS + MBROTS:
 else:
     fractalName = sys.argv[1]
     if sys.argv[1] in JULIAS:
-        ImagePainter(fractalName, fractals, "julia")
+        ImagePainter(fractalName, fractals, fractals[fractalName]["type"])
     elif sys.argv[1] in MBROTS:
-        ImagePainter(fractalName, fractals, "mbrot")
+        ImagePainter(fractalName, fractals, fractals[fractalName]["type"])

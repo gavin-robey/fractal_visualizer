@@ -152,7 +152,7 @@ fractals = {fractalType: x: data, y: data, axisLen: data }
 * There is no input with this file, only an outputted dictionary
 
 ```python
-in class ImagePainter 
+in class ImagePainter: 
 
     def __init__(self, imageName, fractalInformation, fractalType):
         '''
@@ -169,7 +169,7 @@ in class ImagePainter
         windowSize: Integer representing the size of the window
         img: the PhotoImage class that stores all the pixels for our image at a given size 
         main: calls the main method so that this class can run without calling any methods
-        This class imports 4 modules: tkinter, time, Palette, and sys
+        This class imports 6 modules: tkinter, time, Palette, sys, Julia and Mandelbrot
         This class creates the picture of the specified fractal and draws it to the screen using the tkinter module.
         This class also uses the fractal information to find the distance between points and passes that data into the 
         Palette class to determine the color of each pixel.
@@ -280,15 +280,19 @@ color = Palette failed and program crashed
 ```python
 in class Palette: 
 
-    def __init__(self, fractalType, coordinate):
+    def __init__(self, fractalType, coordinate, julia, mbrot):
         '''
         This class returns String, more specifically a string representing a color.
-        This class has 2 arguments:
+        This class has 4 arguments:
         fractalType: String
         coordinate: Complex number
-        This class has 4 data members: 
+        julia: Julia module
+        mbrot: Mandelbrot module
+        This class has 6 data members: 
         fractalType: String: representing the type of the fractal
         coordinate: Complex: representing the coordinate of the real and imaginary number
+        julia: Julia module: represents the julia module and all its data
+        mbrot: Mandelbrot module: represents the mandelbrot module and al its data
         mbrotPalette: List of Strings: Representing the color palette for the mandelbrot algorithm
         juliaPalette: List of Strings: Representing the color palette for the julia algorithm
         This class returns the color of the current pixel by finding the index of the specific color palette given 
@@ -352,6 +356,26 @@ colorPalette[index is in range but not correct]
 ```python
 colorPalette[index is out of range and not correct]
 ```
+
+```python
+in class Palette:
+    def __len__(self):
+        '''
+        returns: Integer 
+        This method has no arguments
+        This method returns the length of the selected palette
+        It does this by checking the type and then returning the length of the correct type of palette
+        '''
+        if type is julia:
+            return len(julia palette)
+        elif type is mandelbrot:
+            return len(mandelbrot palette)
+```
+#### What happens with good input?
+* The functionality of this method relies on the existence of either the julia or mandelbrot color palette lists, if these exist then there will be no errors.
+#### What happens with bad input?
+* The functionality of this method relies on the existence of either the julia or mandelbrot color palette lists, if these do not exist then there will be errors.
+
 ```python
 in Julia.py
 
@@ -390,23 +414,61 @@ getCount(complex(1,2), 5)
 ```python
 getCount(1, "Five")
 ```
+```python
+getCount()
+```
+
+```python
+in Julia.py
+
+def testPixelAmount(row, col):
+    '''
+    This function returns: Integer
+    This function has 2 arguments:
+    row: Integer
+    col: Integer
+    This function returns the amount of pixels created depending on a row or column amount
+    This function is used for the purposes of unit testing.
+    '''
+    return row * col
+    
+```
+#### What happens with good input?
+* If all input is correct, then the number of pixels created is output
+#### What happens with bad input?
+* If any of the arguments are the wrong type then the program will crash.
+* For example, if `col` is not an integer, then the program will crash with an `incompatable type` error
+* If any of the arguments are not given then the program will crash
+
+#### Good Examples:
+```python
+testPixelAmount(1,2)
+```
+#### Bad Examples:
+```python
+testPixelAmount("five",2)
+```
+```python
+testPixelAmount()
+```
+
 
 ```python
 in Mandelbrot.py
 
-def getCount(z, paletteLength):
+def getCount(c, paletteLength):
     '''
     This function returns: Integer
     This function has 2 arguments:
-    z: Complex
+    c: Complex
     paletteLength: Integer
     This function loops through the length of the color palette and depending on some magic from the mandelbrot algorithm
     it returns the number of iterations
     (the pseudo code below is something I don't quite understand because I don't know how the mandelbrot algorithm works)
     '''
-    c = complex at (0,0)
+    z = complex at (0,0)
     for length of paletteLength:
-        c = c * c + z #This part I don't understand
+        z = z * z + c #This part I don't understand
         if absolute value of z  > 2:
             add to count 
             return count
@@ -429,6 +491,44 @@ getCount(complex(1,2), 5)
 ```python
 getCount(1, "Five")
 ```
+```python
+getCount()
+```
+
+```python
+in Mandelbrot.py
+
+def testPixelAmount(row, col):
+    '''
+    This function returns: Integer
+    This function has 2 arguments:
+    row: Integer
+    col: Integer
+    This function returns the amount of pixels created depending on a row or column amount
+    This function is used for the purposes of unit testing.
+    '''
+    return row * col
+    
+```
+#### What happens with good input?
+* If all input is correct, then the number of pixels created is output
+#### What happens with bad input?
+* If any of the arguments are the wrong type then the program will crash.
+* For example, if `col` is not an integer, then the program will crash with an `incompatable type` error
+* If any of the arguments are not given then the program will crash
+
+#### Good Examples:
+```python
+testPixelAmount(1,2)
+```
+#### Bad Examples:
+```python
+testPixelAmount("five",2)
+```
+```python
+testPixelAmount()
+```
+
 
 
 ## Phase 3: Implementation *(15%)*
@@ -439,12 +539,120 @@ focus on the structure and the way my code works together. I had a lot of fun do
 
 ## Phase 4: Testing & Debugging *(30%)*
 
-**Deliver:**
+&nbsp; **Error**
 
-*   A set of test cases that you have personally run on your computer.
-    *   Include a description of what happened for each test case.
-    *   For any bugs discovered, describe their cause and remedy.
-*   Write your test cases in plain language such that a non-coder could run them and replicate your experience.
+
+&nbsp;&nbsp; When running the program and trying to run `python src/main.py fulljulia` I got this error:
+```commandline
+src/main.py fulljulia
+Traceback (most recent call last):
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/main.py", line 58, in <module>
+    julia.julia_main(sys.argv[1])  	         	  
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/julia_fractal.py", line 149, in julia_main
+    makePictureOfFractal(images, image, ".png", window, juliaPalette, img, GREY0, 512)
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/julia_fractal.py", line 46, in makePictureOfFractal
+    minx = fractal['centerX'] - (fractal['axisLen'] / 2.0)
+KeyError: 'axisLen'
+```
+
+&nbsp; **Solution**
+
+&nbsp;&nbsp; The reason this happened was because when unifying the way both programs were written, I copied the implementation of how the fractal information was being accessed from the Mandelbrot implementation but in the julia code, it uses the term length not len. This Is why there was a crash.
+
+
+&nbsp; **Error**
+
+&nbsp;&nbsp; When running the program I got this error:
+```commandline
+gavinrobey@Gavins-MacBook-Air cs1440-robey-gavin-assn4 % python3 src/main.py mandelbrot
+\Traceback (most recent call last):
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/main.py", line 59, in <module>
+    imagePainter = ImagePainter(fractalName, fractals, "mbrot")
+TypeError: ImagePainter() takes no arguments
+gavinrobey@Gavins-MacBook-Air cs1440-robey-gavin-assn4 % \
+```
+
+&nbsp; **Solution**
+
+&nbsp;&nbsp; I had this error because I was an idiot and instead of creating an initializer I created __int__() instead so this happened. This was obviously an easy fix, but crazy how one dumb letter can cause alot of frustration.
+
+
+&nbsp; **Error**
+
+&nbsp;&nbsp; When running the program I got this error:
+
+
+
+![](../data/assn4-0_failure.png)
+
+
+&nbsp; **Solution**
+
+&nbsp;&nbsp; All of my output pictures had the wrong colors in the wrong spots
+This was because I forgot to subtract one from the total count, my colors were off because we are using this as an index, so there will be off by one error. After fixing this issue, the output looked correct.
+
+
+&nbsp; **Error**
+
+&nbsp;&nbsp; When running the first Julia unit test I got this error:
+```commandline
+Ran 1 test in 0.002s
+
+FAILED (failures=1)
+
+
+#009cb3 != #002277
+
+Expected :#002277
+Actual   :#009cb3
+```
+&nbsp; **Solution**
+
+&nbsp;&nbsp; It turns out I fell for a lying comment in the original code. I picked up that the comment was lying in my code smells
+document, the comment was saying that the number of iterations of the julia color palette was 76, then it inputted 78. Well turns out 
+neither of these values are the length of the Julia color palette, it was actually 96. The porgram did not need the last 18 values, but then the last output was
+the last value of the array. This means that the last color was wrong and this is why my unit test was failing. I did not 
+even notice that the output color of my refactored program was different until I compared against the old one and tested my code.
+
+
+&nbsp; **Running Unit Tests**
+
+&nbsp;&nbsp; After fixing the one error above, these were the results of my unit tests:
+```commandline
+gavinrobey@Gavins-MacBook-Air cs1440-robey-gavin-assn4 % python3 src/runTests.py
+testNumOfFractals (Testing.TestMandelbrot.TestMandelbrot) ... ok
+testPixelAmount (Testing.TestMandelbrot.TestMandelbrot) ... ok
+test_colorOfThePixel (Testing.TestMandelbrot.TestMandelbrot) ... ok
+test_palleteLength (Testing.TestMandelbrot.TestMandelbrot) ... ok
+testAxisLength (Testing.TestJulia.TestJulia) ... ok
+testNumOfFractals (Testing.TestJulia.TestJulia) ... ok
+testPixelAmount (Testing.TestJulia.TestJulia) ... ok
+test_colorOfThePixel (Testing.TestJulia.TestJulia) ... ok
+test_palleteLength (Testing.TestJulia.TestJulia) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK
+```
+
+&nbsp; **What these tests mean**
+
+&nbsp;&nbsp; I have 9 tests total: 
+
+testNumOfFractal: This tests how many fractal types are in the dictionary
+
+testPixelAmount: This tests to ensure the pixel amount is what it should be
+
+test_colorOfThePixel: This tests that a specific pixel is the right color 
+
+test_paletteLength: This tests to ensure that the color palette has the correct length 
+
+testAxisLength: This tests to make sure both the dictionary can be accessed properly but also so that the axis length is correct 
+
+(All data was contrived from the original starter code, all tests pass on the standards of output from the starter code)
+
+
 
 
 ## Phase 5: Deployment *(5%)*

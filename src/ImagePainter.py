@@ -1,6 +1,8 @@
 from tkinter import Tk, Canvas, PhotoImage, mainloop
 from time import time
 from Palette import Palette
+import Julia
+import Mandelbrot
 import sys
 
 
@@ -21,7 +23,7 @@ class ImagePainter:
         windowSize: Integer representing the size of the window
         img: the PhotoImage class that stores all the pixels for our image at a given size
         main: calls the main method so that this class can run without calling any methods
-        This class imports 4 modules: tkinter, time, Palette, and sys
+        This class imports 6 modules: tkinter, time, Palette, sys, Julia, and Mandelbrot
         This class creates the picture of the specified fractal and draws it to the screen using the tkinter module.
         This class also uses the fractal information to find the distance between points and passes that data into the
         Palette class to determine the color of each pixel.
@@ -78,6 +80,6 @@ class ImagePainter:
             for col in range(self.__windowSize):
                 x = minx + col * pixelSize
                 y = miny + row * pixelSize
-                color = Palette(self.__fractalType, complex(x, y)).getPixelColor()
+                color = Palette(self.__fractalType, complex(x, y), Julia, Mandelbrot).getPixelColor()
                 self.__img.put(color, (col, self.__windowSize - row))
             self.__window.update()  # display a row of pixels

@@ -17,3 +17,11 @@ def getCount(z, paletteLength):
             count += i
             return count
     return count - 1
+
+
+def testPixelAmount(row, col):
+    '''
+    Returns the amount of pixels created depending on how many columns or rows there are
+    '''
+    pixels = row * col
+    return pixels

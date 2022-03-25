@@ -6,7 +6,8 @@
 | March 22   | 1 hour     | Found smells and finished the Smells.md file
 | March 23   | 1 hour     | Finished phase 0 and phase 1
 | March 24   | 4 hours    | Cleaned up original files, Finished phase 2 of SDP and finished user manual, and finished first UML
-| Total Time | 7 hours    |
+| March 25   | 4 hours    | Finihsed implementation, created unit tests, and passed all tests created.
+| Total Time | 11 hours   |
 
 
 ## Sprint 4.1

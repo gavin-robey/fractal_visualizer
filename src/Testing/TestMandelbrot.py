@@ -22,35 +22,40 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS  	         	  
 # IN THE SOFTWARE.  	         	  
 
-import unittest  	         	  
-from mbrot_fractal import colorOfThePixel, palette, MAX_ITERATIONS, pixelsWrittenSoFar  	         	  
+import unittest
+from Palette import Palette
+import Julia, Mandelbrot
+from FractalInformation import fractals
 
 
 # autocmd BufWritePost <buffer> !python3 runTests.py  	         	  
 
 class TestMandelbrot(unittest.TestCase):  	         	  
     def test_colorOfThePixel(self):  	         	  
-        self.assertEqual(colorOfThePixel(complex(0, 0), palette), '#e8283f')  	         	  
-        self.assertEqual(colorOfThePixel(complex(-0.751, 1.1075), palette), '#baf12e')  	         	  
-        self.assertEqual(colorOfThePixel(complex(-0.2, 1.1075), palette), '#e0ceaf')  	         	  
-        self.assertEqual(colorOfThePixel(complex(-0.75, 0.1075), palette), '#f1da2e')  	         	  
-        self.assertEqual(colorOfThePixel(complex(-0.748, 0.1075), palette), '#deb69f')  	         	  
-        self.assertEqual(colorOfThePixel(complex(-0.7562500000000001, 0.078125), palette), '#e1bc7e')  	         	  
-        self.assertEqual(colorOfThePixel(complex(-0.7562500000000001, -0.234375), palette), '#e7ddd7')  	         	  
-        self.assertEqual(colorOfThePixel(complex(0.3374999999999999, -0.625), palette), '#e1d1bd')  	         	  
-        self.assertEqual(colorOfThePixel(complex(-0.6781250000000001, -0.46875), palette), '#eccd43')  	         	  
-        self.assertEqual(colorOfThePixel(complex(0.4937499999999999, -0.234375), palette), '#d9e758')  	         	  
-        self.assertEqual(colorOfThePixel(complex(0.3374999999999999, 0.546875), palette), '#e1cbbd')  	         	  
+        self.assertEqual(Palette("mbrot", complex(0, 0), Julia, Mandelbrot).getPixelColor(), '#e8283f')
+        self.assertEqual(Palette("mbrot", complex(-0.751, 1.1075),Julia, Mandelbrot).getPixelColor(), '#baf12e')
+        self.assertEqual(Palette("mbrot", complex(-0.2, 1.1075), Julia, Mandelbrot).getPixelColor(), '#e0ceaf')
+        self.assertEqual(Palette("mbrot", complex(-0.75, 0.1075),Julia, Mandelbrot).getPixelColor(), '#f1da2e')
+        self.assertEqual(Palette("mbrot", complex(-0.748, 0.1075), Julia, Mandelbrot).getPixelColor(), '#deb69f')
+        self.assertEqual(Palette("mbrot", complex(-0.7562500000000001, 0.078125), Julia, Mandelbrot).getPixelColor(), '#e1bc7e')
+        self.assertEqual(Palette("mbrot", complex(-0.7562500000000001, -0.234375), Julia, Mandelbrot).getPixelColor(), '#e7ddd7')
+        self.assertEqual(Palette("mbrot", complex(0.3374999999999999, -0.625), Julia, Mandelbrot).getPixelColor(), '#e1d1bd')
+        self.assertEqual(Palette("mbrot", complex(-0.6781250000000001, -0.46875), Julia, Mandelbrot).getPixelColor(), '#eccd43')
+        self.assertEqual(Palette("mbrot", complex(0.4937499999999999, -0.234375), Julia, Mandelbrot).getPixelColor(), '#d9e758')
+        self.assertEqual(Palette("mbrot", complex(0.3374999999999999, 0.546875), Julia, Mandelbrot).getPixelColor(), '#e1cbbd')
 
-    def test_pixelsWrittenSoFar(self):  	         	  
-        self.assertEqual(pixelsWrittenSoFar(7, 7), 49)  	         	  
-        self.assertEqual(pixelsWrittenSoFar(257, 321), 82497)  	         	  
-        self.assertEqual(pixelsWrittenSoFar(256, 256), 65536)  	         	  
-        self.assertEqual(pixelsWrittenSoFar(100, 100), 10000)  	         	  
-        self.assertEqual(pixelsWrittenSoFar(640, 480), 307200)  	         	  
+    def test_palleteLength(self):
+        self.assertEqual(111, len(Palette("mbrot", complex(0, 0), Julia, Mandelbrot)))
 
-    def test_palleteLength(self):  	         	  
-        self.assertEqual(111, len(palette))  	         	  
+    def testNumOfFractals(self):
+        self.assertEqual(len(fractals), 12)
+
+    def testPixelAmount(self):
+        self.assertEqual(Mandelbrot.testPixelAmount(7, 7), 49)
+        self.assertEqual(Mandelbrot.testPixelAmount(257, 321), 82497)
+        self.assertEqual(Mandelbrot.testPixelAmount(256, 256), 65536)
+        self.assertEqual(Mandelbrot.testPixelAmount(100, 100), 10000)
+        self.assertEqual(Mandelbrot.testPixelAmount(640, 480), 307200)
 
 
 if __name__ == '__main__':  	         	  

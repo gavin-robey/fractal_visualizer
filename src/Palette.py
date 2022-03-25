@@ -1,18 +1,17 @@
-import Julia
-import Mandelbrot
-
-
 class Palette:
-    def __init__(self, fractalType, coordinate):
+    def __init__(self, fractalType, coordinate, julia, mbrot):
         '''
         This class returns String, more specifically a string representing a color.
-        In order to access the color found, call the getPixelColor method
-        This class has 2 arguments:
+        This class has 4 arguments:
         fractalType: String
         coordinate: Complex number
-        This class has 4 data members:
+        julia: Julia module
+        mbrot: Mandelbrot module
+        This class has 6 data members:
         fractalType: String: representing the type of the fractal
         coordinate: Complex: representing the coordinate of the real and imaginary number
+        julia: Julia module: represents the julia module and all its data
+        mbrot: Mandelbrot module: represents the mandelbrot module and al its data
         mbrotPalette: List of Strings: Representing the color palette for the mandelbrot algorithm
         juliaPalette: List of Strings: Representing the color palette for the julia algorithm
         This class returns the color of the current pixel by finding the index of the specific color palette given
@@ -20,6 +19,8 @@ class Palette:
         '''
         self.__fractalType = fractalType
         self.__coordinate = coordinate
+        self.__julia = julia
+        self.__mbrot = mbrot
         self.__mbrotPalette = [
         '#89ff00', '#a4f817', '#baf12e', '#ccec43', '#d9e758', '#e3e46b', '#e1d97e',
         '#e0d18f', '#dfce9f', '#e0ceaf', '#e1d1bd', '#e4d6cb', '#e7ddd7', '#ece5e3',
@@ -51,10 +52,7 @@ class Palette:
         '#01ff63', '#00fc69', '#00f970', '#00f677', '#00f27d', '#00ef83',
         '#00ec89', '#00e88e', '#00e594', '#00e299', '#00de9e', '#00dba3',
         '#00d8a7', '#00d4ab', '#00d1af', '#00ceb3', '#00cab7', '#00c7ba',
-        '#00c4be', '#00c0c0', '#00b7bd', '#00adba', '#00a4b6', '#009cb3',
-        '#0093b0', '#008bac', '#0082a9', '#007ba6', '#0073a2', '#006b9f',
-        '#00649c', '#005d98', '#005695', '#004f92', '#00498e', '#00438b',
-        '#003d88', '#003784', '#003181', '#002c7e', '#00277a', '#002277',
+        '#00c4be', '#00c0c0', '#00b7bd', '#00adba', '#00a4b6', '#009cb3'
         ]
 
     def getPixelColor(self):
@@ -66,6 +64,12 @@ class Palette:
         modules.
         '''
         if self.__fractalType == 'julia':
-            return self.__juliaPalette[Julia.getCount(self.__coordinate, len(self.__juliaPalette))]
+            return self.__juliaPalette[self.__julia.getCount(self.__coordinate, len(self.__juliaPalette))]
         elif self.__fractalType == 'mbrot':
-            return self.__mbrotPalette[Mandelbrot.getCount(self.__coordinate, len(self.__mbrotPalette))]
+            return self.__mbrotPalette[self.__mbrot.getCount(self.__coordinate, len(self.__mbrotPalette))]
+
+    def __len__(self):
+        if self.__fractalType == 'julia':
+            return len(self.__juliaPalette)
+        elif self.__fractalType == 'mbrot':
+            return len(self.__mbrotPalette)
