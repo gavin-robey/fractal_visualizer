@@ -69,6 +69,12 @@ class Palette:
             return self.__mbrotPalette[self.__mbrot.getCount(self.__coordinate, len(self.__mbrotPalette))]
 
     def __len__(self):
+        '''
+        returns: Integer
+        This method has no arguments
+        This method returns the length of the selected palette
+        It does this by checking the type and then returning the length of the correct type of palette
+        '''
         if self.__fractalType == 'julia':
             return len(self.__juliaPalette)
         elif self.__fractalType == 'mbrot':
