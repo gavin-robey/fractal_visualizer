@@ -49,17 +49,45 @@ maintenance in the future.
 
 *   Tag commits at the end of select phases of the SDP:
     0.  Tag `A4.1-analyzed` on the commit at the end of **Phase 1: System Analysis**
-    1.  Tag `A4.1-designed` on the commit at the end of **Phase 2: Design** (you've written pseudocode, first draft of the user's manual and UML class diagram)
+        *   Submission should include:
+            *   Work finished on Software Development Plan phases 0 and 1, including relevant updates to `Plan-4.1.md`
+            *   `Signature.md` updated
+    1.  Tag `A4.1-designed` on the commit at the end of **Phase 2: Design**
+        *   Submission should include:
+            *   Work finished on Software Development Plan through phase 2, including pseudocode and relevant updates to `Plan-4.1.md`
+            *   `Signature.md` updated
+            *   First draft of `Manual.md` describes the expected final product
+            *   `Phase-2-UML` is created and matches your currently planned approach
     2.  Tag `A4.1-implemented` on the commit at the end of **Phase 3: Implementation**
-    3.  Tag `A4.1-tested` on the commit at the end of **Phase 4: Testing & Debugging** (you've finished your unit tests)
+        *   Submission should include:
+            *   Work finished on Software Development Plan through phase 3, including relevant updates to `Plan-4.1.md`
+                *   We do *not* require Phase 3 to be filled out in `Plan-4.1.md`, but you may want to document notable events that happen during implementation (such as removing an unnecessary function/class)
+                *   DO NOT COPY SOURCE CODE INTO PHASE 3 OF THE PLAN FILE *unless* it is directly relevant to a notable event you document
+            *   Majority of source code is implemented
+            *   `Signature.md` updated
+            *   Updated draft of `Manual.md` describes the current product in detail
+            *   `Phase-2-UML` is updated to match your current source code
+    3.  Tag `A4.1-tested` on the commit at the end of **Phase 4: Testing & Debugging**
+        *   Submission should include:
+            *   Work finished on Software Development Plan through phase 4, including relevant updates to `Plan-4.1.md`
+            *   All unit tests should be completed, non-trivial, and passing
+            *   Necessary updates and fixes to source code are applied
+            *   `Signature.md` updated
     4.  Tag the final commit of this sprint `A4.1-deployed`.
-        *   Mind the capitalization and spelling of your tags!
+        *   Submission should include:
+            *   Updated `README-4.1.md` with notes for your grader, if necessary
+            *   Finalized `Signature.md` and `Plan-4.1.md` files
+            *   Updated `Manual.md` file to match the final product
+            *   Finalized `Phase-2-UML` that matches your final implementation
 *   Push tags to GitLab before the due date
     *   Mind the capitalization and spelling of your tags!
+    *   `$ git push origin master A4.1-analyzed A4.1-designed A4.1-implemented A4.1-tested A4.1-deployed`
 *   You can give one commit many tags
     *   For example, if you complete multiple phases in one commit, apply all relevant tags
+    *   **IMPORTANT:** Having many different commits and having your tags on different commits will make it easier for your grader to know if work was properly done at the expected times
 *   These tags don't necessarily need to be in the above order, but all should be present
     *   Likewise, it is okay to change files after its phase is over; you don't need to move the tags when this happens
+    *   We recommend following the above order, as it is the order your project *should* be created in
 
 
 ## Requirements
@@ -95,7 +123,9 @@ maintenance in the future.
     -   The concrete sub-classes of `Fractal` are used _interchangeably_ in your program.
         -   This is an example of *polymorphism* in action: objects of different classes which are used in the same way.
         -   The code which uses a `Fractal`-derived object does not inspect the object to determine what kind of fractal it is; it just works because it defines the `count()` method.
+            -   Directly inspecting the type of an object (i.e. checking `isinstance(frac, Julia)`) before use defeats the purpose of polymorphism.  A submission that does this will lose points.
     -   `Fractal` objects have no relation whatsoever to `Palettes`, nor any knowledge about `Colors`.
+        -   Information that relates to a `Palette` (such as its length) can be known by a `Fractal` object if needed, **but your fractal should not get this information from a `Palette` object or the `Palette` module directly**
 1.  `FractalFactory` class or module
     -   Follow the [Factory Method Pattern](https://sourcemaking.com/design_patterns/factory_method) in your program when you need to instantiate objects embodying fractal algorithms.  `FractalFactory` returns a concrete fractal object based upon a configuration file given to it from the main program.  See below for details about the format of the fractal configuration file.
     -   The file defining `FractalFactory` is the only place in your entire program where your concrete `Fractal`-derived classes need to be imported.
@@ -104,14 +134,16 @@ maintenance in the future.
         -   ```python
             from FractalFactory import FractalFactory
             
+            fractalInfo = ... # get a data structure about the fractal
             factory = FractalFactory()
-            fractal = factory.makeFractal(sys.argv[1])
+            fractal = factory.makeFractal(fractalInfo)
             ```
         - Instead, `FractalFactory` might be a module containing the function `makeFractal()`:
         -   ```python
             import FractalFactory
-            
-            fractal = FractalFactory.makeFractal(sys.argv[1])
+
+            fractalInfo = ... # get a data structure about the fractal
+            fractal = FractalFactory.makeFractal(fractalInfo)
             ```
     -   When no fractal configuration file is specified by the user on the command line, `FractalFactory` produces a "default" fractal configuration object (or dictionary).
         -   This default object is hard-coded into your program
@@ -151,8 +183,11 @@ maintenance in the future.
     -   Other data used by `getColor(n)` are supplied through `self`.
     -   Define at least **two** concrete subclasses of `Palette` classes that provide alternative color palettes.
         -   Generalize color palette creation so that a user-defined number of iterations may be specified instead of using a hard-coded array of colors.
+            -   Take some time to make your color palette *look good* for any number of iterations between 64 and 512.  Transition between opposing colors to increase the contrast and detail in the final image.
+            -   Some programmers use the modulus `%` operator to create color palettes  of "repeating stripes" to gracefully handle large iteration counts. You *may* do this for some of your color palettes, but **at least one** palette must by *dynamically generated* using the `colour` module and the `Color.range_to` method.
     -   The concrete sub-classes of  `Palette`  are used _interchangeably_ in your program.  This is an example of polymorphism in action: objects of different classes which are used in the same way.  The code which uses a `Palette`-derived object does not inspect the object to determine what kind of palette it is; it just works because it defines the `getColor()` method.
-    -   `Palette` objects have no relation to nor knowledge of `Fractal` and its derived classes.
+            -   Directly inspecting the type of an object (i.e. checking `isinstance(pal, ColorCube)`) before use defeats the purpose of polymorphism.  A submission that does this will lose points.
+    -   `Palette` objects have no relation to nor knowledge of `Fractal` and its derived classes, nor should it expect to be used directly by a `Fractal` object.
 4.  `PaletteFactory` class or module
     -   Follow the [Factory Method Pattern](https://sourcemaking.com/design_patterns/factory_method) in your program when you need to instantiate objects embodying palettes.  `PaletteFactory` returns a concrete palette object specified by the user on the command line.
     -   The file defining `PaletteFactory` is the only place in your entire program where your concrete `Palette`-derived classes need to be imported.
@@ -176,16 +211,26 @@ maintenance in the future.
         ```python
         raise NotImplementedError("Invalid palette requested")
         ```
+    -   `PaletteFactory` needs some information about a fractal to properly construct a `Palette` to be used with it (e.g. the number of iterations).  Information returned by `FractalParser` *may* be given to `PaletteFactory`.  However, the actual `Palette` object *should not* contain or use the `fractalInfo` object directly.
+    -   ```python
+        import FractalParser
+        import PaletteFactory
+
+        fractalInfo = FractalParser.parseFracFile(sys.argv[1])
+        palette = PaletteFactory.makePalette(paletteName, fractalInfo)
+        ```
 5.  `ImagePainter` class
     -   Continuing the work of the last sprint, convert this module into a class
         -   This class remains the *only* place in the program where `tkinter` is imported and used directly
-    -   The `ImagePainter` constructor takes the products of the `FractalFactory` and `PaletteFactory` as input
+    -   The `ImagePainter` constructor takes the products of the `FractalFactory`, `PaletteFactory`, and `FractalParser` as input
         -   Create the `ImagePainter` object in `main.py` **after** the factories have done their thing
         -   The `ImagePainter` does not use or know about the factories; it simply consumes their products
-        -   Neither does the `ImagePainter` know about command-line arguments
+        -   Neither does the `ImagePainter` know about command-line arguments or `.frac` files
+            -   It *may* see a data-structure which stores the result of parsing this `.frac` file
     -   The `ImagePainter` employs the **Strategy Design Pattern** when it calls a fractal object's `.count()` method
         -   `ImagePainter` does **not** use an `if`/`elif`/`else` decision tree that handles each type of fractal individually
         -   It relies on Duck-Typing to treat all `Fractal`s exactly the same
+        -   `ImagePainter` *directly* takes advantage of polymorphism and the fact that each `Fractal` "quacks" the same way with the `Fractal.count` method
 6.  Documentation (UML, user manual, etc.) from the previous assignment is congruent with final the product.  List the names of possible palettes in the user manual as this program will not regard absent command line arguments as an error and will not print a usage message.
 7.  Seven (7) meaningful, non-trivial unit tests are included.
     -   All of them pass.
@@ -234,10 +279,8 @@ When an missing, or inaccessible fractal configuration file is given, the progra
 $ python src/main.py data/NOT_EXIST ColorCube
 Traceback (most recent call last):
   File "src/main.py", line 26, in <module>
-    fractal = FractalFactory.makeFractal(cfg)
-  File "/home/fadein/cs1440-falor-erik-assn4/src/FractalFactory.py", line 30, in makeFractal
-    cfg = __readFrac(cfgFile)
-  File "/home/fadein/cs1440-falor-erik-assn4/src/FractalFactory.py", line 64, in readFrac
+    fractal = FractalParser.parseFracFile(fracFileName)
+  File "/home/fadein/cs1440-falor-erik-assn4/src/FractalParser.py", line 30, in parseFracFile
     with open(cfgFile) as f:
 FileNotFoundError: [Errno 2] No such file or directory: 'data/NOT_EXIST'
 ```
@@ -257,13 +300,33 @@ Traceback (most recent call last):
 NotImplementedError: Invalid palette requested
 ```
 
+### Default Fractal Requirements
+
+We give you a lot of latitude to choose your default fractal and default palettes.  These requirements are placed upon your default fractal to keep the program's default behavior within a reasonable run-time and to ensure it illustrates your programs capabilities.
+
+The default fractal should meet these requirements:
+
+0.  Be no larger than `640x640` and no smaller than `256x256` in size
+1.  The maximum-iteration value be between `64` and `256`
+    *   The default color palette must be dynamically generated for the maximum iteration value you choose
+2.  The picture that is drawn must be of some "fascinating" fractal behavior
+    *   What is considered "fascinating" is very subjective; we are looking for notable variation in your default fractal's image, and not a mostly-blank canvas
+    *   Choose a default fractal that produces an enticing image 
+    *   The default fractal will be the first impression your program leaves on our client; make it a good one!
+3.  The default fractal's configuration information is directly hard-coded into the source code, and is *not* sourced from an external `.frac` file by means of a hard-coded file path.
+    *   Hard-coding a path makes your program crash when it is not run from a specific directory
+
+Not adhering to the above requirements will result in a **10 point penalty**.
+
 
 ## Fractal configuration file format
 
 Fractal configuration files have a simple format.  They are line-oriented
 plain-text files with one key/value pair per line.  Key/value pairs are
 separated by a colon `:`.  This format is easily converted into dictionaries by
-your program.
+your program.  Dictionaries are not the only way to store this data; you may
+choose another data structure (or create your own) that stores and allows one
+to validate this `.frac` file data.
 
 Study the files in the [../data/](../data/) directory.  Take particular notice
 of the file [../data/invalid.frac](../data/invalid.frac), which is an example
