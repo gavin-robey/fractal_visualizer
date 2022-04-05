@@ -149,19 +149,17 @@ maintenance in the future.
         -   This default object is hard-coded into your program
         -   **Important:** hard-coding the *path* to a fractal configuration file in `data/` is **not acceptable**
         -   Do not assume that directory will be available when your program is run!
-    -   `FractalFactory` must perform some error checking upon the contents of the fractal configuration file it uses to create a `Fractal` object.
-        *   When a missing or inaccessible fractal is called for, simply let the `open()` function fail.
-        *   When an unrecognized fractal type is encountered, raise [`NotImplementedError`](https://docs.python.org/3/library/exceptions.html#NotImplementedError)
-        *   When a fractal configuration file contains other errors, raise [`RuntimeError`](https://docs.python.org/3/library/exceptions.html#RuntimeError).  Possible errors are described in the section "Fractal Configuration File Format" below.
 2. `FractalParser` class or module
+    *   The information provided by this class or module is used as input to `FractalFactory` and `PaletteFactory`
     *   Reads the `.frac` file named on the command line and converts its contents into a form usable by your program
         *   Previously, fractal information was written directly into dictionaries in the program's source code
         *   Now this data is stored externally so that new fractals can be added without needing to re-write the program's source code
         *   *Design Hint: convert this text file's contents in a dictionary instead of returning a `Fractal` object; making a `Fractal` is the responsibility of `FractalFactory`*
     *   Verifies that the `.frac` file named on the command line is correctly formatted
-        *   Raise a `RuntimeError` when a problem is detected
-        *   Read [Fractal configuration file format](#fractal-configuration-file-format) for more details about what these files should contain
-    *   The information provided by this module becomes the input to the `FractalFactory` and `PaletteFactory`
+        *   When a missing or inaccessible fractal is called for, simply let the `open()` function fail.
+        *   When an unrecognized fractal type is encountered, raise [`NotImplementedError`](https://docs.python.org/3/library/exceptions.html#NotImplementedError)
+        *   When a fractal configuration file contains other errors, raise [`RuntimeError`](https://docs.python.org/3/library/exceptions.html#RuntimeError).
+            *   Read [Fractal Configuration File Format](#fractal-configuration-file-format) for more details about what these files should contain
 3.  Create a `Palette` class and *two* concrete sub-classes
     -   The `Palette` class exists solely to provide a common structure to the concrete classes that inherit from it.  Your program will not create plain `Palette` objects.  It will instead use classes derived from `Palette` through inheritance.
     -   `Palette` provides a placeholder `getColor()` method which raises an exception when called.  It consists solely of this statement: `raise NotImplementedError("Concrete subclass of Palette must implement getColor() method")`
