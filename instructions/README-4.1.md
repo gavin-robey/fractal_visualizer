@@ -48,17 +48,17 @@ maintenance in the future.
 ## Submission Instructions
 
 *   Tag commits at the end of select phases of the SDP:
-    0.  Tag `A4.1-analyzed` on the commit at the end of **Phase 1: System Analysis**
+    1.  Tag `A4.1-analyzed` on the commit at the end of **Phase 1: System Analysis**
         *   Submission should include:
             *   Work finished on Software Development Plan phases 0 and 1, including relevant updates to `Plan-4.1.md`
             *   `Signature.md` updated
-    1.  Tag `A4.1-designed` on the commit at the end of **Phase 2: Design**
+    2.  Tag `A4.1-designed` on the commit at the end of **Phase 2: Design**
         *   Submission should include:
             *   Work finished on Software Development Plan through phase 2, including pseudocode and relevant updates to `Plan-4.1.md`
             *   `Signature.md` updated
             *   First draft of `Manual.md` describes the expected final product
             *   `Phase-2-UML` is created and matches your currently planned approach
-    2.  Tag `A4.1-implemented` on the commit at the end of **Phase 3: Implementation**
+    3.  Tag `A4.1-implemented` on the commit at the end of **Phase 3: Implementation**
         *   Submission should include:
             *   Work finished on Software Development Plan through phase 3, including relevant updates to `Plan-4.1.md`
                 *   We do *not* require Phase 3 to be filled out in `Plan-4.1.md`, but you may want to document notable events that happen during implementation (such as removing an unnecessary function/class)
@@ -67,13 +67,13 @@ maintenance in the future.
             *   `Signature.md` updated
             *   Updated draft of `Manual.md` describes the current product in detail
             *   `Phase-2-UML` is updated to match your current source code
-    3.  Tag `A4.1-tested` on the commit at the end of **Phase 4: Testing & Debugging**
+    4.  Tag `A4.1-tested` on the commit at the end of **Phase 4: Testing & Debugging**
         *   Submission should include:
             *   Work finished on Software Development Plan through phase 4, including relevant updates to `Plan-4.1.md`
             *   All unit tests should be completed, non-trivial, and passing
             *   Necessary updates and fixes to source code are applied
             *   `Signature.md` updated
-    4.  Tag the final commit of this sprint `A4.1-deployed`.
+    5.  Tag the final commit of this sprint `A4.1-deployed`.
         *   Submission should include:
             *   Updated `README-4.1.md` with notes for your grader, if necessary
             *   Finalized `Signature.md` and `Plan-4.1.md` files
