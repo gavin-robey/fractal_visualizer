@@ -78,7 +78,7 @@ works correctly._
     4.  Tag the final commit of this sprint `A4.0-deployed`.
         *   The code at this commit is what the graders will assess for this submission
         *   This tag lets you continue to work on Assignment 4.1 in this repository without mistaking those commits as being late submissions on this assignment
-        *   Therefore, **`A4.0-tested`** is the most important tag of all; if it is missing there is a **10 point penalty**
+        *   Therefore, **`A4.0-deployed`** is the most important tag of all; if it is missing there is a **10 point penalty**
 *   Push tags to GitLab before the due date
     *   Mind the capitalization and spelling of your tags!
 *   You can give one commit many tags
@@ -386,6 +386,7 @@ repo](https://gitlab.cs.usu.edu/erik.falor/sp22-cs1440-lecturenotes/-/tree/maste
 Once you've got a copy of your UML diagram *in a viewable image format,* commit your UML diagram under the `doc/` directory.
 
 Your UML diagram can be created with any drawing software.  Here are two recommendations:
+
 0.  https://diagrams.net *(also known as draw.io)*
     *   **Uncheck the "Transparent Background" option when you export your UML class diagram to a PNG image**
 1.  https://lucidchart.com

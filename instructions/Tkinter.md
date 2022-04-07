@@ -1,5 +1,14 @@
 # Tkinter Installation & Troubleshooting
 
+## Table of Contents
+
+*   [Windows + Python installed from Python.org](#windows-python-installed-from-pythonorg)
+*   [Windows + Python installed from Windows App Store](#windows-python-installed-from-windows-app-store)
+*   [Linux: Arch-based distributions (Manjaro, Artix, etc.)](#linux-arch-based-distributions-manjaro-artix-etc)
+*   [Linux: Debian-based distributions (Ubuntu, Kubuntu, Xubuntu, Mint, etc.)](#linux-debian-based-distributions-ubuntu-kubuntu-xubuntu-mint-etc)
+*   [macOS Monterey](#macos-monterey)
+
+
 The starter code is runnable out-of-the-box.  If it doesn't work on your computer, check this document for instructions.  If you still have trouble, contact DuckieCorp management with a bug report.
 
 **Include:**
@@ -68,15 +77,28 @@ ImportError: libtk8.6.so: cannot open shared object file: No such file or direct
 Install the `tk` package:
 
 ```
+$ sudo pacman -Sy
 $ sudo pacman -S tk
 ```
 
 *(Note: this command may also install other necessary dependencies, such as `Tcl`)*
 
 
-## Linux: Debian-based distributions (Ubuntu, Mint, etc.)
+## Linux: Debian-based distributions (Ubuntu, Kubuntu, Xubuntu, Mint, etc.)
 
-**TBD**
+On these systems you may see an error similar to this:
+
+```
+$ python3 src/main.py
+Traceback (most recent call last):
+  File "/home/ubuntu/cs1440-falor-erik-assn4/src/main.py", line 5, in <module>
+    import julia_fractal as julia
+  File "/home/ubuntu/cs1440-falor-erik-assn4/src/julia_fractal.py", line 4, in <module>
+    import turtle
+  File "/usr/lib/python3.9/turtle.py", line 107, in <module>
+    import tkinter as TK
+ModuleNotFoundError: No module named 'tkinter'
+```
 
 ### Fix
 
@@ -86,3 +108,23 @@ $ sudo apt install python3-tk
 ```
 
 *(Note: this command may also install other necessary dependencies, such as `Tcl`)*
+
+
+## macOS Monterey
+
+*From Python.org: If you are using macOS 12 Monterey or later, you may see problems with tkinter-based applications. The most recent versions of python.org installers (for 3.10.0 and 3.9.8) have patched versions of Tk to avoid these problems. They should be fixed in an upcoming Tk 8.6.12 release.*
+
+This means that Tkinter applications won't properly work with the Python 3 bundled with macOS 10.6 - 12.2.  The most common symptom is that the Tkinter window is black and appears unresponsive while the program runs.
+
+### Fix
+
+The remedy is to download and install the latest Python 3 package directly from python.org.
+
+0.  Browse to the [python.org downloads page](https://www.python.org/downloads/)
+1.  Download the latest build of Python 3 for macOS
+2.  Launch the .pkg installer program
+3.  Click through the installer
+4.  When the installer finishes, a Finder window is opened that contains a few more programs to run.
+    *   Run `Install Certificates.command`
+    *   Run `Update Shell Profile.command`
+5.  Open a new Terminal and run `python3 --version` to make sure the reported version number matches what you just installed
