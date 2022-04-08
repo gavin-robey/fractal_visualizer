@@ -19,12 +19,12 @@
 
 ## Sprint 4.1
 
-| Date       | Time Spent    | Events
-|------------|---------------|--------------------
-| April 4    | 0 hours       | Procrastinated-no work
-| April 5    | 0 minutes     | Procrastinated-no work
-| April 6    | 2 hours       | Looked over the requirements and really studied them.
-| April 7    | 1 hour        | Finished phase 0 and 1 of the SDP
-| April      | 0             | Weekend - no work
-| April      | 0             | Weekend - no work
-| Total Time | 3 hours       |
+| Date       | Time Spent | Events
+|------------|------------|--------------------
+| April 4    | 0 hours    | Procrastinated-no work
+| April 5    | 0 minutes  | Procrastinated-no work
+| April 6    | 2 hours    | Looked over the requirements and really studied them.
+| April 7    | 6 hours    | Finished phase 0, 1, and 2 of the SDP, UMl, manual, and phase 3.
+| April      | 0          | Weekend - no work
+| April      | 0          | Weekend - no work
+| Total Time | 8 hours    |
