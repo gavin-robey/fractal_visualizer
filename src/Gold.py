@@ -13,8 +13,8 @@ class Gold(Palette):
     '''
 
     def __init__(self, iterations):
-        self.iterations = iterations
-        self.palette = []
+        self.__iterations = iterations
+        self.__palette = []
         gray = Color('gray')
         blue = Color('blue')
         gold = Color('#FFE3AF')
@@ -22,22 +22,29 @@ class Gold(Palette):
         cyan = Color('cyan')
         magenta = Color('magenta')
         black = Color('black')
-        steps = math.ceil(self.iterations / 11)
-        self.palette = [c.hex_l for c in black.range_to(gold, steps)]
-        self.palette += [c.hex_l for c in gold.range_to(gray, steps)]
-        self.palette += [c.hex_l for c in gray.range_to(black, steps)]
-        self.palette += [c.hex_l for c in black.range_to(yellow, steps)]
-        self.palette += [c.hex_l for c in yellow.range_to(black, steps)]
-        self.palette += [c.hex_l for c in black.range_to(cyan, steps)]
-        self.palette += [c.hex_l for c in cyan.range_to(black, steps)]
-        self.palette += [c.hex_l for c in black.range_to(blue, steps)]
-        self.palette += [c.hex_l for c in blue.range_to(black, steps)]
-        self.palette += [c.hex_l for c in black.range_to(magenta, steps)]
-        self.palette += [c.hex_l for c in magenta.range_to(black, steps)]
+        steps = math.ceil(self.__iterations / 11)
+        self.__palette = [c.hex_l for c in black.range_to(gold, steps)]
+        self.__palette += [c.hex_l for c in gold.range_to(gray, steps)]
+        self.__palette += [c.hex_l for c in gray.range_to(black, steps)]
+        self.__palette += [c.hex_l for c in black.range_to(yellow, steps)]
+        self.__palette += [c.hex_l for c in yellow.range_to(black, steps)]
+        self.__palette += [c.hex_l for c in black.range_to(cyan, steps)]
+        self.__palette += [c.hex_l for c in cyan.range_to(black, steps)]
+        self.__palette += [c.hex_l for c in black.range_to(blue, steps)]
+        self.__palette += [c.hex_l for c in blue.range_to(black, steps)]
+        self.__palette += [c.hex_l for c in black.range_to(magenta, steps)]
+        self.__palette += [c.hex_l for c in magenta.range_to(black, steps)]
 
     def getColor(self, count):
         '''
         This method returns a single element from the palette array at index of count
         '''
-        return self.palette[count]
+        return self.__palette[count]
+
+    def getLength(self):
+        '''
+        This method returns the length of the palette created
+        '''
+        return len(self.__palette)
+
 

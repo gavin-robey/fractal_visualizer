@@ -298,14 +298,18 @@ in Palette.py
 class Palette:
     '''
     This class is an abstract class with no arguments. 
-    This class has one method: getColor().
+    This class has 2 methods: getColor() and getLength()
     getColor() has one argument: count: int
+    getLength() has no arguments
     The purpose of this class is to create a blueprint of how every class implementing it must be structured.
     If the method of this class is not implemented then the program will crash with a "not implemented error"
     '''
     
      def getColor(count):
         crash and give error message if not implemented
+    
+     def getLength():
+        crash if not implemented
 ```
 #### What happens with good input?
 * If all methods are used, then the program will run correctly
@@ -316,6 +320,7 @@ class Palette:
 ```python
 class example(Palette):
     def getColor(self, count):
+    def getLength(self):
 ```
 
 #### Bad Examples:
@@ -572,6 +577,13 @@ class anyOfTheNamesAbove(Palette):
         This method returns a single element from the palette array at index of count
         '''
         return palette at count
+    
+    def getLength(self):
+        '''
+        Return: Int
+        This method has no arguments
+        This method returns the length of the palette created
+        '''
 ```
 #### What happens with good input?
 * If all input is correct, then a single color is output.
@@ -872,17 +884,191 @@ I had a weird infinite loop glitch it was pretty weird, but I fixed it.
 
 ## Phase 4: Testing & Debugging *(30%)*
 
-**Deliver:**
 
-*   A set of test cases that you have personally run on your computer.
-    *   Include a description of what happened for each test case.
-    *   For any bugs discovered, describe their cause and remedy.
-*   Write your test cases in plain language such that a non-coder could run them and replicate your experience.
+&nbsp; **Error**
 
+
+&nbsp;&nbsp; When running the program I got this error:
+```commandline
+Traceback (most recent call last):
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/main.py", line 28, in <module>
+    ImagePainter(fractalInformation, fractalFactory, paletteFactoy)
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/ImagePainter.py", line 34, in __init__
+    self.__main()
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/ImagePainter.py", line 46, in __main
+    self.__display()
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/ImagePainter.py", line 66, in __display
+    minx = self.__fractalInformation['centerx'] - (self.__fractalInformation['axislength'] / 2.0)
+TypeError: 'FractalParser' object is not subscriptable
+```
+
+&nbsp; **Solution**
+
+&nbsp;&nbsp; The reason this was happening was because I never called the getConfiguration() method. Thus this object was 
+not returning anything.Here is how I solved the issue as described below(Yes I know it is an easy fix):
+
+````python
+fractal = FractalParser.getConfiguration()
+````
+
+
+&nbsp; **Error**
+
+
+&nbsp;&nbsp; When running the program, simply nothing was happening. To find out what was happening I printed out the 
+output of the PaletteFactory.getColor() method. It turns out that caused an infinite loop or at least a rediculously long loo[ .
+here is the output to the console:
+```commandline
+#291818
+#291818
+#291818
+#291818
+#291818
+#291818
+#291818
+#291818
+#291818
+#291818
+#291818
+#291818
+....repeating forever
+```
+
+&nbsp; **Solution**
+
+&nbsp;&nbsp; The reason this was happening was because I was instantiating my palette factory class inside the nested for loop.
+In order to create a palette, multiple for loops are needed to build an array. This was being instantiated thousands of times 
+inside of thousands of times resulting in terrible performance to the point that the window never output anything.
+Here is how I originally constructed my code:
+
+````python
+in main:
+    paletteFactoy = PaletteFactory()
+    ImagePainter(fractalInformation, fractalFactory, paletteFactoy)
+
+in ImagePainter:
+    self.__paletteFactory.makePalette(fractalInformation["iterations"]).getColor(count)
+````
+
+&nbsp;&nbsp; Here is how I changed it to work properly:
+````python
+in main:
+    paletteFactoy = PaletteFactory().makePalette(fractalInformation["iterations"])
+    ImagePainter(fractalInformation, fractalFactory, paletteFactoy)
+
+in ImagePainter:
+    self.__paletteFactory.getColor(count)
+````
+
+&nbsp; **Error**
+
+
+&nbsp;&nbsp; After refactoring my code I got this error:
+```commandline
+    ImagePainter(fractalInformation, fractalFactory, paletteFactoy)
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/ImagePainter.py", line 35, in __init__
+    self.__main()
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/ImagePainter.py", line 47, in __main
+    self.__display()
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/ImagePainter.py", line 80, in __display
+    color = self.paletteFactory.getColor(self.fractalFactory.count(complex(x, y)))
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/Rainbow.py", line 32, in getColor
+    return self.palette[count]
+IndexError: list index out of range
+```
+
+&nbsp; **Solution**
+
+&nbsp;&nbsp; This happened because when refactoring my code, I forgot to pass in the fractal information to the fractal factory. This meant that the image being printed was the default image but the palette was from the selected palette. Thus being out of range.
+
+
+&nbsp; **Error**
+
+
+&nbsp;&nbsp; When running my unit tests, I got this error:
+```commandline
+ERROR: testLengthOfPalette (Testing.TestPaletteFactory.TestPaletteFactory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/gavinrobey/cs1440-robey-gavin-assn4/src/Testing/TestPaletteFactory.py", line 8, in testLengthOfPalette
+    self.assertEqual(PaletteFactory.makePalette(11), 11)
+TypeError: makePalette() missing 1 required positional argument: 'iterations'
+```
+
+&nbsp; **Solution**
+
+&nbsp;&nbsp; This happened because I forgot to add parenthesis after calling the Palette class. This too WAY too long to 
+figure out, unfortunately.
+
+
+&nbsp; **Unit Testing**
+
+### What my tests mean and what they do
+```python
+testColorOfPaletteGold():
+    '''
+    This ensures the color output by the gold palette is what it should be or at least is consistent and what I expect it to be.
+    '''
+```
+```python
+testColorOfPaletteRainbow():
+    '''
+    This ensures the color output by the rainbow palette is what it should be or at least is consistent and what I expect it to be.
+    '''
+```
+```python
+testLengthOfPaletteGold():
+    '''
+    This ensures the length of the gold palette is greater than or equal to the iterations given.
+    This is especially important to prevent any out of bounds errors when accessing the gold palette.
+    '''
+```
+```python
+testLengthOfPaletteRainbow():
+    '''
+    This ensures the length of the rainbow palette is greater than or equal to the iterations given.
+    This is especially important to prevent any out of bounds errors when accessing the rainbow palette.
+    '''
+```
+
+```python
+testFractalParser():
+    '''
+    This test ensures that runtime errors are given when they should be
+    This is critical to ensure that no invalid dictionaries are created.
+    '''
+```
+```python
+testJuliaCount():
+    '''
+    This ensure that the count given by the Fractal concrete classes is correct for julia fractals
+    '''
+```
+
+```python
+testMandelbrotCount ():
+    '''
+    This ensure that the count given by the Fractal concrete classes is correct for Mandelbrot fractals
+    '''
+```
+&nbsp; **Test Results**
+
+```commandline
+testColorOfPaletteGold (Testing.TestPaletteFactory.TestPaletteFactory) ... ok
+testColorOfPaletteRainbow (Testing.TestPaletteFactory.TestPaletteFactory) ... ok
+testLengthOfPaletteGold (Testing.TestPaletteFactory.TestPaletteFactory) ... ok
+testLengthOfPaletteRainbow (Testing.TestPaletteFactory.TestPaletteFactory) ... ok
+testFractalParser (Testing.TestFractalFactory.TestFractalFactory) ... ok
+testJuliaCount (Testing.TestFractalFactory.TestFractalFactory) ... ok
+testMandelbrotCount (Testing.TestFractalFactory.TestFractalFactory) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.163s
+
+OK
+```
 
 ## Phase 5: Deployment *(5%)*
-
-**Deliver:**
 
 *   Your repository pushed to GitLab.
 *   **Verify** that your final commit was received by browsing to its project page on GitLab.
@@ -898,18 +1084,26 @@ I had a weird infinite loop glitch it was pretty weird, but I fixed it.
 
 ## Phase 6: Maintenance
 
-**Deliver:**
 
 *   Write brief and honest answers to these questions: *(Note: do this before you complete **Phase 5: Deployment**)*
-    *   What parts of your program are sloppily written and hard to understand?
-        *   Are there parts of your program which you aren't quite sure how/why they work?
-        *   If a bug is reported in a few months, how long would it take you to find the cause?
-    *   Will your documentation make sense to...
-        *   ...anybody besides yourself?
-        *   ...yourself in six month's time?
-    *   How easy will it be to add a new feature to this program in a year?
-    *   Will your program continue to work after upgrading...
-        *   ...your computer's hardware?
-        *   ...the operating system?
-        *   ...to the next version of Python?
+    * What parts of your program are sloppily written and hard to understand?
+    * *I think that my Palette classes are a bit messy im sure I could clean it a bit more but its not terrible*
+        * Are there parts of your program which you aren't quite sure how/why they work?
+        * *No everything makes sense!*
+        * If a bug is reported in a few months, how long would it take you to find the cause?
+        * *Not Long, im happy with how this is written*
+    * Will your documentation make sense to...
+        * ...anybody besides yourself?
+        * *Hope So!*
+        * ...yourself in six month's time?
+        * *Yes definately*
+    * How easy will it be to add a new feature to this program in a year?
+    * *Super easy, thats the point of the assignment right?*
+    * Will your program continue to work after upgrading...
+        * ...your computer's hardware?
+        * *Yes*
+        * ...the operating system?
+        * *Yes*
+        * ...to the next version of Python?
+        * *Yes*
 *   Fill out the Assignment Reflection on Canvas.

@@ -25,6 +25,6 @@
 | April 5    | 0 minutes  | Procrastinated-no work
 | April 6    | 2 hours    | Looked over the requirements and really studied them.
 | April 7    | 6 hours    | Finished phase 0, 1, and 2 of the SDP, UMl, manual, and phase 3.
-| April      | 0          | Weekend - no work
-| April      | 0          | Weekend - no work
-| Total Time | 8 hours    |
+| April 8    | 2 hours    | Finished testing and the rest of the assignment
+| April 9    | 0          | Weekend - no work
+| Total Time | 10 hours   |

@@ -41,3 +41,9 @@ class Rainbow(Palette):
         '''
         return self.__palette[count]
 
+    def getLength(self):
+        '''
+        This method returns the length of the palette created
+        '''
+        return len(self.__palette)
+

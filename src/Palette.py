@@ -6,3 +6,6 @@ class Palette:
 
     def getColor(self, count):
         raise NotImplementedError("Concrete subclass of Palette must implement getColor() method")
+
+    def getLength(self):
+        raise NotImplementedError("Concrete subclass of Palette must implement getLength() method")
