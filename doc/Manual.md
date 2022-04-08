@@ -23,7 +23,7 @@ Close the image window to exit the program
 
 
 
-![](../data/minibrot.png)
+![](../default.png)
 
 
 **To create a different fractal simply enter the file name of a fractal configuration file**
@@ -62,7 +62,7 @@ Close the image window to exit the program
 ```
 
 
-![](../data/spiral0.png)
+![](../spiral0.png)
 
 
 **To create a fractal with a new color palette, use these commands:**
@@ -77,6 +77,7 @@ or
 ```commandline
 python3 src/main.py data/spiral0.frac rainbow
 ```
+
 
 **These commands must be given after the desired fractal, and cannot be given on their own**
 
