@@ -489,7 +489,7 @@ color = PalettegetColor failed and program crashed
 ```
 
 ```python
-in Julia.py, Mandelbrot.py, Mandelbrot3.py, or Mandelbrot4.py
+in , Mandelbrot.py, Mandelbrot3.py, or Mandelbrot4.py
 '''(strictly for readability sake I will document all of these files in this one section. They are all built exactly the same
 but have a few minor differences)'''
 
@@ -506,19 +506,18 @@ class anyOfTheNamesAbove(Fractal):
         iterations = iterations
     
     @Override
-    def count(z or c):
+    def count(c):
         '''
         This function returns: Integer
         This function has 1 argument:
-        z or c: Complex
+        c: Complex
         This function loops through the length of the color palette and depending on some magic from the julia, mendelbrot, etc algorithms
         it returns the number of iterations
         '''
-        c = complex at (-1,0) "(for julia) otherwise" 
-        z = complex at (0,0 ) "(for mandelbrots)"
+        z = complex at (0,0 )
         for length of iterations:
-            (z = z * z + c ) "(Julia algorithm) otherwise it will be whatever algorithm is being used"
-            if absolute value of z or c  > 2:
+            (z = z * z + c) "(Mandelbrot algorithm) otherwise it will be whatever algorithm is being used"
+            if absolute value of z  > 2:
                 add to count 
                 return count
 ```
@@ -526,13 +525,69 @@ class anyOfTheNamesAbove(Fractal):
 * If all input is correct, then the number of iterations as determined by the respective algorithm is output
 #### What happens with bad input?
 * If any of the arguments are the wrong type then the program will crash.
-* The `z or c` argument must be a complex number
-* For example, if `c or z` is not a complex number, then the program will crash with an `incompatable type` error
+* The `c` argument must be a complex number
+* For example, if `c` is not a complex number, then the program will crash with an `incompatable type` error
 * If any of the arguments are not given then the program will crash
 
 #### Good Examples:
 ```python
 count(complex(1,2))
+```
+#### Bad Examples:
+```python
+count(1)
+```
+```python
+count()
+```
+
+```python
+in Julia.py
+
+class Julia(Fractal):
+    '''
+    Return: int
+    This class imports one module: Fractal
+    This class has one method: count()
+    This class has 3 arguments: 
+    iterations: int: determines how many times the main loop must be executed
+    creal: float: the real point for the julia algorithm 
+    cimag: float: the imaginary point for the julia algorithm
+    This class applies the julia algorithm.
+    '''
+    
+    def __init__(iterations, creal, cimag):
+        iterations = iterations
+        creal = creal
+        cimag = cimag
+    
+    @Override
+    def count(z):
+        '''
+        This function returns: Integer
+        This function has 1 argument:
+        z: Complex
+        This function loops through the length of the color palette and depending on some magic from the julia, mendelbrot, etc algorithms
+        it returns the number of iterations
+        '''
+        c = complex at (creal and cimag)
+        for length of iterations:
+            z = z * z + c
+            if absolute value of z  > 2:
+                add to count 
+                return count
+```
+#### What happens with good input?
+* If all input is correct, then the number of iterations as determined by the respective algorithm is output
+#### What happens with bad input?
+* If any of the arguments are the wrong type then the program will crash.
+* The `z` argument must be a complex number
+* For example, if `z` is not a complex number, then the program will crash with an `incompatable type` error
+* If any of the arguments are not given then the program will crash
+
+#### Good Examples:
+```python
+Julia(100, -1.0, 0.0).count(complex(1,2))
 ```
 #### Bad Examples:
 ```python

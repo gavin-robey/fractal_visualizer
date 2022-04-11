@@ -1,9 +1,10 @@
 # An unconnected Julia set fractal
+# changed this file because the centerX and centerY need to be floats
 type: julia
 creal: .26
 cimag: .0015
-centerx: 0
-centery: 0
+centerx: 0.0
+centery: 0.0
 axislength: 2.17
 pixels: 512
 iterations: 64

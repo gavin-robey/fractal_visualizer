@@ -35,7 +35,7 @@ class FractalFactory:
         if self.configuration["type"] == "mandelbrot":
             return Mandelbrot(self.configuration["iterations"])
         elif self.configuration["type"] == "julia":
-            return Julia(self.configuration["iterations"])
+            return Julia(self.configuration["iterations"], self.configuration['creal'], self.configuration['cimag'])
         elif self.configuration["type"] == "mandelbrot3":
             return Mandelbrot3(self.configuration["iterations"])
         elif self.configuration["type"] == "mandelbrot4":
