@@ -8,10 +8,16 @@
 
 
 ## 4.1: Design Patterns
-*   [Instructions](./instructions/README-4.1.md)
-*   [Hints](./instructions/Hints-4.1.md)
-*   [Rubric](./instructions/Rubric-4.1.md)
-*   The [Fractal Gallery](./data/README.md)
+* [Instructions](./instructions/README-4.1.md)
+* [Hints](./instructions/Hints-4.1.md)
+* [Rubric](./instructions/Rubric-4.1.md)
+* The [Fractal Gallery](./data/README.md)
+
+## To whoever is grading this assignment:
+* The unit tests need to be run in the root directory.
+* The reason this needs to happen is because I'm testing the fractal parser using a file from the data directory.
+* This test will fail if this is not done. 
+* I asked Jaxton If this technique was acceptable, he said it is ok as long as I make note of it in the README, which I am currently doing. Thanks!
 
 
 ## Background story
