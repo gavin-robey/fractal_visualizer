@@ -1,8 +1,6 @@
 # Fractal Configuration Files
 
-These files are not used in Assignment 4.0.  They will be used in Assignment 4.1.
-
-You may import their data into your Assignment 4.0 program to look at some new fractals.
+This directory contains all default configuration files. Below are the settings for each configuration file, and an image generated from these settings. 
 
 ## 8points.frac
 
@@ -17,7 +15,7 @@ axisLength: 0.000000361314
 iterations: 350
 ~~~
 
-![8points.png](8points.png "Image generated from 8points.frac")
+![8points.png](../fractalGallery/8points.png "Image generated from 8points.frac")
 
 
 ## branches100.frac
@@ -33,7 +31,7 @@ centery: -0.338644137198173
 axislength: 5.05822370716613e-06
 ~~~
 
-![branches100.png](branches100.png "Image generated from branches100.frac")
+![branches100.png](../fractalGallery/branches100.png "Image generated from branches100.frac")
 
 
 ## branches256.frac
@@ -49,7 +47,7 @@ centery: -0.338644137198173
 axislength: 5.05822370716613e-06
 ~~~
 
-![branches256.png](branches256.png "Image generated from branches256.frac")
+![branches256.png](../fractalGallery/branches256.png "Image generated from branches256.frac")
 
 
 ## branches512.frac
@@ -65,27 +63,7 @@ centery: -0.338644137198173
 axislength: 5.05822370716613e-06
 ~~~
 
-![branches512.png](branches512.png "Image generated from branches512.frac")
-
-
-## burningship.frac
-
-A basic Burning Ship Julia fractal
-
-~~~
-# You'll need to implement this formula yourself to make your program produce this image
-type: burningshipjulia
-creal: -.598
-cimag: .9225
-centerx: 0
-centery: 0
-axislength: 4
-pixels: 512
-iterations: 64
-~~~
-
-![burningship.png](burningship.png "Image generated from burningship.frac")
-
+![branches512.png](../fractalGallery/branches512.png "Image generated from branches512.frac")
 
 ## connected.frac
 
@@ -104,12 +82,12 @@ iterations: 64
 # See also unconnected.frac
 ~~~
 
-![connected.png](connected.png "Image generated from connected.frac")
+![connected.png](../fractalGallery/connected.png "Image generated from connected.frac")
 
 
 ## coral.frac
 
-This one reminds me of coral
+Madelbrot fractal that looks like coral
 
 ~~~
 type: Mandelbrot
@@ -121,12 +99,10 @@ pixels: 640
 iterations: 512
 ~~~
 
-![coral.png](coral.png "Image generated from coral.frac")
+![coral.png](../fractalGallery/coral.png "Image generated from coral.frac")
 
 
 ## elephants.frac
-
-Can you see upside-down elephants swinging their trunks?
 
 ~~~
 type: mandelbrot
@@ -137,12 +113,10 @@ axislength: 0.03
 iterations: 100
 ~~~
 
-![elephants.png](elephants.png "Image generated from elephants.frac")
+![elephants.png](../fractalGallery/elephants.png "Image generated from elephants.frac")
 
 
 ## enhance.frac
-
-Enhance.  Enhance.  ENHANCE!!
 
 ~~~
 type: mandelbrot
@@ -153,12 +127,12 @@ axislength: 0.01
 iterations: 300
 ~~~
 
-![enhance.png](enhance.png "Image generated from enhance.frac")
+![enhance.png](../fractalGallery/enhance.png "Image generated from enhance.frac")
 
 
 ## fulljulia.frac
 
-The full julia set, but these creal and cimag values are BORING
+The full julia set, with slightly different creal and cimg values
 
 ~~~
 type: julia
@@ -171,55 +145,24 @@ axislength: 4.0
 iterations: 78
 ~~~
 
-![fulljulia.png](fulljulia.png "Image generated from fulljulia.frac")
+![fulljulia.png](../fractalGallery/fulljulia.png "Image generated from fulljulia.frac")
 
 
 ## hourglass.frac
-
-I think this looks like an hourglass
-
 ~~~
 type: julia
 creal: -1
 cimag: 0
 pixels: 1024
-
-# I guess "X marks the spot" works, too.  Naming stuff is hard, okay?
-
 centerx: 0.618
 centery: 0.0
 axislength: 0.017148277367054
 iterations: 78
 ~~~
 
-![hourglass.png](hourglass.png "Image generated from hourglass.frac")
-
-
-## invalid.frac
-
-This is a purposefully broken fractal config file
-
-~~~
-# Use this to stress-test your configuration file parser
-# Here be dragons!
-Type: BurningShipJulia
-centerX: in the middle
-centerY:
-Itertons: 23.654
-PIXELS: 894.965
-cImag: 0.3
-Type: this is redundant
-Type: no matter, this will all be forgotten in a moment
-Type: julia
-~~~
-
-![invalid.png](invalid.png "Image generated from invalid.frac")
-
+![hourglass.png](../fractalGallery/hourglass.png "Image generated from hourglass.frac")
 
 ## lace-curtians.frac
-
-My grandmother has lace curtains that look JUST LIKE THIS!
-
 ~~~
 type:   Julia
 pixels: 640
@@ -234,21 +177,11 @@ cImag: 0.0
 # minImag:0.243364355580952 maxImag:0.255486498966514
 ~~~
 
-![lace-curtians.png](lace-curtians.png "Image generated from lace-curtians.frac")
+![lace-curtians.png](../fractalGallery/lace-curtians.png "Image generated from lace-curtians.frac")
 
 
 ## lakes.frac
-
-Maybe it's the shoreline of some lakes?
-
 ~~~
-# Found in http://bl.ocks.org/syntagmatic/raw/3736720/ with these parameters
-# realmin:-0.479428184021078 realmax:-0.199032752981838
-# imagmin:0.335501513801008 imagmax:0.50044000264762
-# cr:-1 ci:0
-#
-# Their rendering algorithm outputs this image upside-down relative to ours
-
 type: julia
 creal: -1
 cimag: 0
@@ -259,13 +192,10 @@ axislength: 0.164938488846612
 iterations: 48
 ~~~
 
-![lakes.png](lakes.png "Image generated from lakes.frac")
+![lakes.png](../fractalGallery/lakes.png "Image generated from lakes.frac")
 
 
 ## leaf.frac
-
-Veins on a leaf.  I found this one in GNU XaoS.
-
 ~~~
 type: mandelbrot
 pixels: 640
@@ -273,17 +203,9 @@ centerx:     -1.543577002
 centery:     -0.000058690069
 axislength:  0.000051248888
 iterations: 100
-
-# ;position file automatically generated by xaos 3.6
-# ;  - a realtime interactive fractal zoomer
-# ;use xaos -load <filename> to display it
-# (initstate)
-# (defaultpalette 0)
-# (formula 'mandel)
-# (view -1.543579272 -7.502286298e-05 8.632770454e-06 8.632770454e-06)
 ~~~
 
-![leaf.png](leaf.png "Image generated from leaf.frac")
+![leaf.png](../fractalGallery/leaf.png "Image generated from leaf.frac")
 
 
 ## mandelbrot.frac
@@ -299,7 +221,7 @@ axislength: 4.0
 iterations: 100
 ~~~
 
-![mandelbrot.png](mandelbrot.png "Image generated from mandelbrot.frac")
+![mandelbrot.png](../fractalGallery/mandelbrot.png "Image generated from mandelbrot.frac")
 
 
 ## mandelbrot-zoomed.frac
@@ -315,7 +237,7 @@ axislength: 1.0
 iterations: 256
 ~~~
 
-![mandelbrot-zoomed.png](mandelbrot-zoomed.png "Image generated from mandelbrot-zoomed.frac")
+![mandelbrot-zoomed.png](../fractalGallery/mandelbrot-zoomed.png "Image generated from mandelbrot-zoomed.frac")
 
 
 ## mandelfour.frac
@@ -331,7 +253,7 @@ axislength: 4.0
 iterations: 100
 ~~~
 
-![mandelfour.png](mandelfour.png "Image generated from mandelfour.frac")
+![mandelfour.png](../fractalGallery/mandelfour.png "Image generated from mandelfour.frac")
 
 
 ## mandelthree.frac
@@ -347,13 +269,10 @@ axislength: 4.0
 iterations: 100
 ~~~
 
-![mandelthree.png](mandelthree.png "Image generated from mandelthree.frac")
+![mandelthree.png](../fractalGallery/mandelthree.png "Image generated from mandelthree.frac")
 
 
 ## minibrot.frac
-
-uWu... it's just so cute and TINY!
-
 ~~~
 type: mandelbrot
 pixels: 1024
@@ -363,13 +282,10 @@ axislength: 0.0028839111328125
 iterations: 350
 ~~~
 
-![minibrot.png](minibrot.png "Image generated from minibrot.frac")
+![minibrot.png](../fractalGallery/minibrot.png "Image generated from minibrot.frac")
 
 
 ## rabbit-hole.frac
-
-Down the rabbit  h o l e   y  o  u       g     o
-
 ~~~
 type:   mandelbrot
 pixels: 640
@@ -379,13 +295,10 @@ centery: 0.117684887459807
 axislength: 0.204501607717042
 ~~~
 
-![rabbit-hole.png](rabbit-hole.png "Image generated from rabbit-hole.frac")
+![rabbit-hole.png](../fractalGallery/rabbit-hole.png "Image generated from rabbit-hole.frac")
 
 
 ## seahorse.frac
-
-I can see the sea horse.  Can you?
-
 ~~~
 type: mandelbrot
 pixels: 640
@@ -395,13 +308,10 @@ axislength: 0.01
 iterations: 384
 ~~~
 
-![seahorse.png](seahorse.png "Image generated from seahorse.frac")
+![seahorse.png](../fractalGallery/seahorse.png "Image generated from seahorse.frac")
 
 
 ## spiral0.frac
-
-spiral0 from the original starter code
-
 ~~~
 type: mandelbrot
 pixels: 640
@@ -411,13 +321,10 @@ axislength: 0.00497817993164062
 iterations: 512
 ~~~
 
-![spiral0.png](spiral0.png "Image generated from spiral0.frac")
+![spiral0.png](../fractalGallery/spiral0.png "Image generated from spiral0.frac")
 
 
 ## spiral1.frac
-
-spiral1 from the original starter code
-
 ~~~
 type: mandelbrot
 pixels: 640
@@ -427,16 +334,11 @@ axislength: 0.002
 iterations: 100
 ~~~
 
-![spiral1.png](spiral1.png "Image generated from spiral1.frac")
+![spiral1.png](../fractalGallery/spiral1.png "Image generated from spiral1.frac")
 
 
 ## spiral-jetty.frac
-
-An homage to Utah's official work of art
-
 ~~~
-# Have you ever visited the northeast shore of the Great Salt Lake?
-
 type: mandelbrot
 pixels: 1024
 centerx: -0.761335372924805
@@ -445,13 +347,10 @@ axislength: 0.00497817993164062
 iterations: 1024
 ~~~
 
-![spiral-jetty.png](spiral-jetty.png "Image generated from spiral-jetty.frac")
+![spiral-jetty.png](../fractalGallery/spiral-jetty.png "Image generated from spiral-jetty.frac")
 
 
 ## starfish.frac
-
-Reminds me of a starfish... you can see it, too, right?
-
 ~~~
 type:   Mandelbrot
 pixels: 640
@@ -461,7 +360,7 @@ centerY: 0.598380871135558
 axisLength: 0.00128413675654471
 ~~~
 
-![starfish.png](starfish.png "Image generated from starfish.frac")
+![starfish.png](../fractalGallery/starfish.png "Image generated from starfish.frac")
 
 
 ## tip0.frac
@@ -477,7 +376,7 @@ axisLength: 1.9375
 iterations: 100
 ~~~
 
-![tip0.png](tip0.png "Image generated from tip0.frac")
+![tip0.png](../fractalGallery/tip0.png "Image generated from tip0.frac")
 
 
 ## tip1.frac
@@ -493,7 +392,7 @@ axisLength: 0.9375
 iterations: 100
 ~~~
 
-![tip1.png](tip1.png "Image generated from tip1.frac")
+![tip1.png](../fractalGallery/tip1.png "Image generated from tip1.frac")
 
 
 ## tip2.frac
@@ -509,7 +408,7 @@ axisLength: 0.09375
 iterations: 100
 ~~~
 
-![tip2.png](tip2.png "Image generated from tip2.frac")
+![tip2.png](../fractalGallery/tip2.png "Image generated from tip2.frac")
 
 
 ## tip3.frac
@@ -525,7 +424,7 @@ axisLength: 0.009375
 iterations: 100
 ~~~
 
-![tip3.png](tip3.png "Image generated from tip3.frac")
+![tip3.png](../fractalGallery/tip3.png "Image generated from tip3.frac")
 
 
 ## tip4.frac
@@ -541,7 +440,7 @@ axisLength: 0.0009375
 iterations: 100
 ~~~
 
-![tip4.png](tip4.png "Image generated from tip4.frac")
+![tip4.png](../fractalGallery/tip4.png "Image generated from tip4.frac")
 
 
 ## unconnected.frac
@@ -557,17 +456,12 @@ centery: 0
 axislength: 2.17
 pixels: 512
 iterations: 64
-
-# See also connected.frac
 ~~~
 
-![unconnected.png](unconnected.png "Image generated from unconnected.frac")
+![unconnected.png](../fractalGallery/unconnected.png "Image generated from unconnected.frac")
 
 
 ## wholly-squid.frac
-
-Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn!
-
 ~~~
 type: mandelbrot
 pixels: 640
@@ -577,6 +471,6 @@ centery: 0.209610393372855
 axislength: 0.00160629282219288
 ~~~
 
-![wholly-squid.png](wholly-squid.png "Image generated from wholly-squid.frac")
+![wholly-squid.png](../fractalGallery/wholly-squid.png "Image generated from wholly-squid.frac")
 
 
